@@ -24,3 +24,21 @@ data_lagged <- tst_lags(data, list("V1" = 1:3, "V2" = 2, "V3" = c(1,7)))
 ```
 
 The output is a tibble with lags 1,2,3 from V1, 2 from V2 and 1,7 from V3. 
+
+## 2. Auto-differencing non-stationary series
+
+This function relies on forecast::ndiffs to automatically apply first difference to non-stationary series. Given a tibble with time series in columns, the function returns a tibble with the non-stationary data in first differences while stationary data are kept unchanged.
+
+### Usage
+
+```r
+
+library(tidyverse)
+
+mu <- list(-2, 0, 2, 4, 6)
+sigma <- list(1, 2, 3, 4, 5)
+series <- purrr::map2_dfc(mu, sigma, rnorm, n = 100) %>% dplyr::mutate_at(vars(V1,V3), funs(cumsum))
+
+series_dif <- tst_ur(series)
+
+```
