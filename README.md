@@ -1,7 +1,9 @@
 # tstools
 This repository is intended to gather my personal utilities designed for time series analysis. Maybe in the near future I will put them together into a single package.
 
-1. tstools_lags: this function relies on tidyverse to create lagged time series in a general way. More specifically, given a tibble (or data frame) and a list with variables names and disired lags, the function creates a tibble with the lagged variables.
+## 1. tstools_lags 
+
+This function relies on tidyverse to create lagged time series in a general way. More specifically, given a tibble (or data frame) and a list with variables names and disired lags, the function creates a tibble with the lagged variables.
 
 For example: 
 
@@ -15,7 +17,7 @@ data <- tibble(Date = seq.Date(from = as.Date("2012-01-01"),
 
 ```
 
-# Create lags 1,2,3 for V1; 2 for V2; and 1,7 for V3.
+### Create lags 1,2,3 for V1; 2 for V2; and 1,7 for V3.
 
 ```r
 data_lagged <- tst_lags(data, list("V1" = 1:3, "V2" = 2, "V3" = c(1,7)))
