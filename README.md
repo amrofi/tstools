@@ -5,7 +5,7 @@ This repository is intended to gather my personal utilities designed for time se
 
 This function relies on tidyverse to create lagged time series in a general way. More specifically, given a tibble (or data frame) and a list with variables names and disired lags, the function creates a tibble with the lagged variables.
 
-For example: 
+### Usage
 
 ```r
 
