@@ -39,6 +39,6 @@ mu <- list(-2, 0, 2, 4, 6)
 sigma <- list(1, 2, 3, 4, 5)
 series <- purrr::map2_dfc(mu, sigma, rnorm, n = 100) %>% dplyr::mutate_at(vars(V1,V3), funs(cumsum))
 
-series_dif <- tst_ur(series)
+series_dif <- auto_dif(series)
 
 ```
