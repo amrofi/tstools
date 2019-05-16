@@ -1,6 +1,16 @@
 # tstools
 This repository is intended to gather my personal utilities designed for time series analysis. Maybe in the near future I will put them together into a single package.
 
+## Installing from github:
+
+```r
+
+devtools::install_github("leripio/tstools")
+
+library(tstools)
+
+```
+
 ## 1. add_lags 
 
 This function relies on tidyverse to create lagged time series in a general way. More specifically, given a tibble (or data frame) and a list with variables names and disired lags, the function creates a tibble with the lagged variables.
