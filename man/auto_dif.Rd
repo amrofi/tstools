@@ -18,7 +18,7 @@ auto_dif(data, type = c("kpss", "adf", "pp"), alpha = 0.05, exclude = NULL)
 }
 
 \value{
-An object of class tibble (tbl) with the non-stationary data in first differences.
+An object of class list with a tibble (series_dif) containing the non-stationary data in first differences; and a tibble (series_ndiffs) containing the results from the unit roots test performed.
 }
 \description{
 This function tests for unit roots and applies first differences to treat non-stationary data.
