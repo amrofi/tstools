@@ -8,6 +8,9 @@ This function relies on tidyverse to create lagged time series in a general way.
 For example: 
 
 ```r
+
+library(tstools)
+
 data <- tibble(Date = seq.Date(from = as.Date("2012-01-01"),
                                to = as.Date("2018-06-01"), 
                                by = "month"),
@@ -34,11 +37,32 @@ This function relies on forecast::ndiffs to automatically apply first difference
 ```r
 
 library(tidyverse)
+library(tstools)
 
 mu <- list(-2, 0, 2, 4, 6)
 sigma <- list(1, 2, 3, 4, 5)
 series <- purrr::map2_dfc(mu, sigma, rnorm, n = 100) %>% dplyr::mutate_at(vars(V1,V3), funs(cumsum))
 
 series_dif <- auto_dif(series)
+
+```
+## 3. acum
+
+Given a tibble (or data frame) with variables in percentage the function creates a tibble with the variables in accumulated percentage.
+
+### Usage
+
+```r
+
+library(tstools)
+
+data <- tibble(Date = seq.Date(from = as.Date("2012-01-01"),
+                               to = as.Date("2018-06-01"),
+                               by = "month"),
+               V1 = rnorm(mean = 0, sd = 1, n = 78),
+               V2 = rnorm(mean = 1, sd = 2, n = 78),
+               V3 = rnorm(mean = 5, sd = 1, n = 78))
+
+data_acum <- acum(data, n = 12, exclude = "Date")
 
 ```
