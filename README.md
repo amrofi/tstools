@@ -42,6 +42,8 @@ The output is a tibble with lags 1,2,3 from V1, 2 from V2 and 1,7 from V3.
 
 This function relies on forecast::ndiffs to automatically apply first difference to non-stationary series. Given a tibble with time series in columns, the function returns a tibble with the non-stationary data in first differences while stationary data are kept unchanged.
 
+Note that only first differences are taken, even if series are integrated of order > 1. So it is advisable to look at "series_ndiffs" to assess the results from the unit root tests and, if necessary, run the function again until all the series are I(0).
+
 ### Usage
 
 ```r
