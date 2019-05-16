@@ -1,7 +1,7 @@
 # tstools
 This repository is intended to gather my personal utilities designed for time series analysis. Maybe in the near future I will put them together into a single package.
 
-## 1. tstools_lags 
+## 1. add_lags 
 
 This function relies on tidyverse to create lagged time series in a general way. More specifically, given a tibble (or data frame) and a list with variables names and disired lags, the function creates a tibble with the lagged variables.
 
@@ -20,12 +20,12 @@ data <- tibble(Date = seq.Date(from = as.Date("2012-01-01"),
 ### Create lags 1,2,3 for V1; 2 for V2; and 1,7 for V3.
 
 ```r
-data_lagged <- tst_lags(data, list("V1" = 1:3, "V2" = 2, "V3" = c(1,7)))
+data_lagged <- add_lags(data, list("V1" = 1:3, "V2" = 2, "V3" = c(1,7)), suffix = "_l")
 ```
 
 The output is a tibble with lags 1,2,3 from V1, 2 from V2 and 1,7 from V3. 
 
-## 2. Auto-differencing non-stationary series
+## 2. auto_dif
 
 This function relies on forecast::ndiffs to automatically apply first difference to non-stationary series. Given a tibble with time series in columns, the function returns a tibble with the non-stationary data in first differences while stationary data are kept unchanged.
 
