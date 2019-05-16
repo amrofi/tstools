@@ -1,0 +1,13 @@
+Package: tstools
+Type: Package
+Title: Utilities for time series
+Version: 0.1.0
+Author: J. Renato Leripio
+Maintainer: J. Renato Leripio <leripiorenato@gmail.com>
+Description: This package gathers a set of utilities designed for working with time series.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+Imports: forecast (>= 8.4), tidyverse (>= 1.2.1), zoo (>= 1.8-5), magrittr
+Suggests: plyr, purrr, dplyr
