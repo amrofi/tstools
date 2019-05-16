@@ -24,7 +24,10 @@ An object of class tibble (tbl) with the non-stationary data in first difference
 This function tests for unit roots and applies first differences to treat non-stationary data.
 }
 \details{
-Tests available are c("kpss", "adf", "pp")
+Tests available are c("kpss", "adf", "pp").
+}
+\note{
+Only first differences are taken, even if series are integrated of order > 1. So it is advisable to look at "series_ndiffs" to assess the results from the unit root tests and, if necessary, run the function again until all the series are I(0).
 }
 \examples{
 \dontrun{
