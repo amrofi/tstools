@@ -61,7 +61,7 @@ series_dif <- auto_dif(series)
 ```
 ## 3. acum_p
 
-Given a tibble (or data frame) with variables in percentage the function creates a tibble with the variables in accumulated percentage.
+Given a numeric vector in percentage the function computes the accumulated percentage in n periods.
 
 ### Usage
 
@@ -77,13 +77,13 @@ data <- tibble(Date = seq.Date(from = as.Date("2012-01-01"),
                V2 = rnorm(mean = 1, sd = 2, n = 78),
                V3 = rnorm(mean = 5, sd = 1, n = 78))
 
-data_acum <- acum(data, n = 12, exclude = "Date")
+data_acum <- dplyr::mutate(data, V1_acum12 = tstools::acum_p(V1, 12))
 
 ```
 
 ## 4. acum_i
 
-Given a tibble (or data frame) with variables in index form the function creates a tibble with the variables in accumulated percentage in n periods relative to the previous n periods.
+Given a numeric vector in index form the function computes the accumulated percentage in n periods relative to the previous n periods.
 
 ### Usage
 
@@ -100,6 +100,6 @@ data <- tibble(Date = seq.Date(from = as.Date("2012-01-01"),
 
 
 
-data_acum <- acum_i(data, n = 12, "Date")
+data_acum <- dplyr::mutate(data, Index_acum12 = tstools::acum_i(Index, 12))
 
 ```
