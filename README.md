@@ -19,6 +19,7 @@ This function relies on tidyverse to create lagged time series in a general way.
 
 ```r
 
+library(tidyverse)
 library(tstools)
 
 data <- tibble(Date = seq.Date(from = as.Date("2012-01-01"),
@@ -58,7 +59,7 @@ series <- purrr::map2_dfc(mu, sigma, rnorm, n = 100) %>% dplyr::mutate_at(vars(V
 series_dif <- auto_dif(series)
 
 ```
-## 3. acum
+## 3. acum_p
 
 Given a tibble (or data frame) with variables in percentage the function creates a tibble with the variables in accumulated percentage.
 
@@ -66,6 +67,7 @@ Given a tibble (or data frame) with variables in percentage the function creates
 
 ```r
 
+library(tidyverse)
 library(tstools)
 
 data <- tibble(Date = seq.Date(from = as.Date("2012-01-01"),
@@ -76,5 +78,28 @@ data <- tibble(Date = seq.Date(from = as.Date("2012-01-01"),
                V3 = rnorm(mean = 5, sd = 1, n = 78))
 
 data_acum <- acum(data, n = 12, exclude = "Date")
+
+```
+
+## acum_i
+
+Given a tibble (or data frame) with variables in index form the function creates a tibble with the variables in accumulated percentage in n periods relative to the previous n periods.
+
+### Usage
+
+```r
+
+library(tidyverse)
+library(tstools)
+
+data <- tibble(Date = seq.Date(from = as.Date("2012-01-01"),
+                               to = as.Date("2018-06-01"),
+                               by = "month"),
+
+               Index = rep(100, 78) + cumsum(rnorm(mean = 0, sd = 1, n = 78)))
+
+
+
+data_acum <- acum_i(data, n = 12, "Date")
 
 ```
