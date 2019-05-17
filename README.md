@@ -81,7 +81,7 @@ data_acum <- acum(data, n = 12, exclude = "Date")
 
 ```
 
-## acum_i
+## 4. acum_i
 
 Given a tibble (or data frame) with variables in index form the function creates a tibble with the variables in accumulated percentage in n periods relative to the previous n periods.
 
