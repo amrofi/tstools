@@ -18,6 +18,9 @@
 #'
 #' # Create lags 1,2,3 for V1; 2 for V2; and 1,7 for V3.
 #'
+#' library(tidyverse)
+#' library(tstools)
+#'
 #' data_lagged <- add_lags(data, list("V1" = 1:3, "V2" = 2, "V3" = c(1,7)))
 
 
