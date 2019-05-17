@@ -4,22 +4,21 @@
 \alias{acum_i}
 \title{Transform variables in index form into variables in accumulate percentage in n periods relative to the previous n periods}
 \usage{
-acum_i(data, n, exclude)
+acum_i(data, n)
 }
 \arguments{
-\item{data}{A tbl with variables in columns}
+\item{data}{A numeric vector}
 
 \item{n}{Number of periods to accumulate}
 
-\item{exclude}{Variables to left aside}
 
 }
 
 \value{
-An object of class tibble (tbl) with variables in accumulated percentage.
+A numeric vector in accumulated percentage.
 }
 \description{
-Given a tibble (or data frame) with variables in index form the function creates a tibble with the variables in accumulated percentage in n periods relative to the previous n periods.
+Given a numeric vector in index form the function creates a numeric vector with in accumulated percentage in n periods relative to the previous n periods.
 }
 
 \examples{
@@ -36,7 +35,7 @@ data <- tibble(Date = seq.Date(from = as.Date("2012-01-01"),
 
 
 
-data_acum <- acum_i(data, n = 12, "Date")
+data_acum <- dplyr::mutate(data, Index_acum12 = acum_i(Index, 12))
               }
 }
 \author{

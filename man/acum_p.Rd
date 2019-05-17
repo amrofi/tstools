@@ -4,22 +4,20 @@
 \alias{acum_p}
 \title{Transform variables in percentage in variables in accumulate percentage}
 \usage{
-acum_p(data, n, exclude)
+acum_p(data, n)
 }
 \arguments{
-\item{data}{A tbl with variables in columns}
+\item{data}{Numeric variable in percentage}
 
 \item{n}{Number of periods to accumulate}
-
-\item{exclude}{Variables to left aside}
 
 }
 
 \value{
-An object of class tibble (tbl) with variables in accumulated percentage.
+A numeric vector in accumulated percentage.
 }
 \description{
-Given a tibble (or data frame) with variables in percentage the function creates a tibble with the variables in accumulated percentage.
+Given vector with variable in percentage the function creates a vector with the variable in accumulated percentage.
 }
 
 \examples{
@@ -35,7 +33,7 @@ data <- tibble(Date = seq.Date(from = as.Date("2012-01-01"),
                V2 = rnorm(mean = 1, sd = 2, n = 78),
                V3 = rnorm(mean = 5, sd = 1, n = 78))
 
-data_acum <- acum_p(data, n = 12, "Date")
+data_acum <- dplyr::mutate(data, V1_acum12 = acum_p(V1, 12))
               }
 }
 \author{

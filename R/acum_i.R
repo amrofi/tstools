@@ -1,14 +1,13 @@
 #' Accumulated variation of an index in "n" periods relative to the "n" preview periods.
 #'
 #' acum_i() transforms variables in percentage in variables in accumulated percentage.
-#' @param data A tbl with variables in columns.
+#' @param data A numeric vector.
 #' @param n Number of periods to accumulate.
-#' @param exclude Vector of variables to left aside.
-#' @return A tbl with variables in accumulated percentage form.
+#' @return A numeric vector in accumulated percentage form.
 #' @importFrom dplyr RcppRoll
 #' @examples
 #' \dontrun{
-#' # Generate tbl with three variables.
+#' # Generate tbl with an numeric index variable
 #'
 #' library(tidyverse)
 #' library(tstools)
@@ -20,17 +19,13 @@
 #'                Index = rep(100, 78) + cumsum(rnorm(mean = 0, sd = 1, n = 78)))
 #'
 #'
-#' data_acum <- acum_i(data, 12, "Date")
+#' data_acum <- dplyr::mutate(data, Index_acum12 = acum_i(Index, 12))
 #' }
 
 
-acum_i <- function(data, n, exclude = NULL){
+  acum_i <- function(data, n){
 
-  `.` <- NULL
-
-  acum_aux <- function(x, n){
-
-    data_ma_n <- RcppRoll::roll_meanr(x, n)
+    data_ma_n <- RcppRoll::roll_meanr(data, n)
 
     data_lag_n <- dplyr::lag(data_ma_n, n)
 
@@ -39,11 +34,3 @@ acum_i <- function(data, n, exclude = NULL){
     return(data_acum_n)
 
   }
-
-  data_acum_i <- data %>%
-
-  {if (is.null(exclude)) dplyr::mutate_all(., dplyr::funs(acum_aux), n) else dplyr::mutate_at(., dplyr::vars(-exclude), dplyr::funs(acum_aux), n)}
-
-  return(data_acum_i)
-
-}
