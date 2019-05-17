@@ -1,5 +1,5 @@
 # tstools
-This repository is intended to gather my personal utilities designed for time series analysis. Maybe in the near future I will put them together into a single package.
+This repository is intended to gather my personal utilities designed for time series analysis.
 
 ## Installing from github:
 
