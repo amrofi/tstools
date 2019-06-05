@@ -38,7 +38,7 @@ data <- tibble(Date = seq.Date(from = as.Date("2012-01-01"),
 data_lagged <- add_lags(data, list("V1" = 1:3, "V2" = 2, "V3" = c(1,7)), suffix = "_l")
 ```
 
-## 2. add_leads (suggestion by Cláudio Shikida)
+## 2. add_leads (suggested by Cláudio Shikida)
 
 The same as add_lags but for leads
 
