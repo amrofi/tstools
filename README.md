@@ -1,4 +1,4 @@
-# tstools
+# tstools (V0.0.2)
 This repository is intended to gather my personal utilities designed for time series analysis. 
 It is a development version, therefore it is important to always install the lastest release.
 
