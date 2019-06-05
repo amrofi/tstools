@@ -38,9 +38,21 @@ data <- tibble(Date = seq.Date(from = as.Date("2012-01-01"),
 data_lagged <- add_lags(data, list("V1" = 1:3, "V2" = 2, "V3" = c(1,7)), suffix = "_l")
 ```
 
+## 2. add_leads (suggestion by Cláudio Shikida)
+
+The same as add_lags but for leads
+
+### Usage
+
+```r
+
+data_leaded <- add_leads(data, list("V1" = 1:3, "V2" = 2, "V3" = c(1,7)), suffix = "_l")
+
+```
+
 The output is a tibble with lags 1,2,3 from V1, 2 from V2 and 1,7 from V3. 
 
-## 2. auto_dif
+## 3. auto_dif
 
 This function relies on forecast::ndiffs to automatically apply first difference to non-stationary series. Given a tibble with time series in columns, the function returns a tibble with the non-stationary data in first differences while stationary data are kept unchanged.
 
@@ -60,7 +72,7 @@ series <- purrr::map2_dfc(mu, sigma, rnorm, n = 100) %>% dplyr::mutate_at(vars(V
 series_dif <- auto_dif(series)
 
 ```
-## 3. acum_p
+## 4. acum_p
 
 Given a numeric vector in percentage the function computes the accumulated percentage in n periods.
 
@@ -82,7 +94,7 @@ data_acum <- dplyr::mutate(data, V1_acum12 = tstools::acum_p(V1, 12))
 
 ```
 
-## 4. acum_i
+## 5. acum_i
 
 Given a numeric vector in index form the function computes the accumulated percentage in n periods relative to the previous n periods.
 
