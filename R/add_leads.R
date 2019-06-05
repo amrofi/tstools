@@ -1,9 +1,9 @@
-#' Create tibble with leads variables
+#' Create tibble with leaded variables
 #'
-#' add_leads() creates a tibble with leads variables
+#' add_leads() creates a tibble with leaded variables
 #' @param data A tbl with variables in columns.
 #' @param vars_leads A list with variables names and number of leads.
-#' @return A tbl with lagged variables.
+#' @return A tbl with leaded variables.
 #' @importFrom dplyr, purrr, plyr
 #' @examples
 #' # Generate tbl with three variables.
