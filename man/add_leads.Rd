@@ -9,7 +9,7 @@ add_leads(data, vars_leads, suffix)
 \arguments{
 \item{data}{A tbl with variables in columns.}
 
-\item{vars_lags}{list with variables names and disired leads}
+\item{vars_leads}{list with variables names and disired leads}
 
 \item{suffix}{Character string with suffix for leaded variables. Default is "_l".}
 
