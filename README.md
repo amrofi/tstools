@@ -50,7 +50,7 @@ data_leaded <- add_leads(data, list("V1" = 1:3, "V2" = 2, "V3" = c(1,7)), suffix
 
 ```
 
-The output is a tibble with lags 1,2,3 from V1, 2 from V2 and 1,7 from V3. 
+The output is a tibble with leads 1,2,3 from V1, 2 from V2 and 1,7 from V3. 
 
 ## 3. auto_dif
 
